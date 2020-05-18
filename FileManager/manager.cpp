@@ -11,16 +11,6 @@ Manager::Manager(QObject *parent) : QObject(parent)
     timer->start(10000);
 }
 
-void Manager::addObserver(FileObserver *observer)
-{
-    connect(this, &Manager::fileChangeState, observer, &FileObserver::updateInfo);
-}
-
-void Manager::removeObserver(FileObserver *observer)
-{
-    disconnect(this, &Manager::fileChangeState, observer, &FileObserver::updateInfo);
-}
-
 void Manager::addFile(const QString &filename)
 {
     QFileInfo info(filename);
@@ -34,7 +24,7 @@ void Manager::checkFiles()
     for(FileInfo &var : storage)
     {
         QFileInfo file(var.fileName);
-        if (file.exists())//if (file.exists() || file.isSymLink())
+        if (file.exists())
         {
             out << "No changes" << "\n";
             if (var.lastModified != file.lastModified().toMSecsSinceEpoch())
