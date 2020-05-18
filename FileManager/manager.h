@@ -18,8 +18,6 @@ class Manager : public QObject
     Q_OBJECT
 public:
     explicit Manager(QObject *parent = nullptr);
-    void addObserver(FileObserver *observer);
-    void removeObserver(FileObserver *observer);
     void addFile(const QString &filename);
 
 signals:
