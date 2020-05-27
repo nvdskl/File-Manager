@@ -18,7 +18,7 @@ class Manager : public QObject
     Q_OBJECT
 public:
     Manager(Manager &other) = delete;
-    void operator= (const Manager &other) = delete;
+    void operator= (Manager &other) = delete;
     static Manager *getLink();
     explicit Manager(QObject *parent = nullptr);
     void addFile(const QString &filename);
