@@ -19,6 +19,8 @@ int main(int argc, char *argv[])
     QCoreApplication a(argc, argv);
 
     Manager manager;
+    manager.getLink();
+    
     manager.addFile("file1.txt");
     FileObserver obs1("file1.txt");
     connectManagerObserver(&manager, &obs1);
