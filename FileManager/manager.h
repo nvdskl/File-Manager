@@ -17,6 +17,9 @@ class Manager : public QObject
 {
     Q_OBJECT
 public:
+    Manager(Manager &other) = delete;
+    void operator= (const Manager &other) = delete;
+    static Manager *getLink();
     explicit Manager(QObject *parent = nullptr);
     void addFile(const QString &filename);
 
@@ -29,6 +32,7 @@ public slots:
 private:
     QList<FileInfo> storage;
     QTimer *timer;
+    static Manager* singleton_;
 };
 
 #endif // MANAGER_H

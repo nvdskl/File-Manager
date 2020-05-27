@@ -11,6 +11,17 @@ Manager::Manager(QObject *parent) : QObject(parent)
     timer->start(10000);
 }
 
+Manager* Manager:: singleton_ = nullptr;
+
+Manager* Manager:: getLink()
+{
+    if(singleton_ == nullptr)
+    {
+        singleton_ = new Manager();
+    }
+    return singleton_;
+}
+
 void Manager::addFile(const QString &filename)
 {
     QFileInfo info(filename);
